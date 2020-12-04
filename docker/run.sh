@@ -11,7 +11,7 @@ function run_built_shell() {
         -e LOCAL_USER_ID=$USER_ID \
         --rm \
         -v $PROJECT_DIR:$DOCKER_PROJECT_DIR \
-        $DOCKER_REGISTRY/$DOCKER_ORG/$BUILT:$BUILT_TAG \
+        $BUILT:$BUILT_TAG \
         bash
 }
 

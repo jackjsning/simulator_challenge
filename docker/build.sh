@@ -15,7 +15,7 @@ function build_docker() {
     DOCKERFILE=$3
     BUILD_ARGS=${@:4}
 
-    docker build -t $DOCKER_REGISTRY/$DOCKER_ORG/$IMAGE:$TAG $BUILD_ARGS -f $DOCKERFILE .
+    docker build -t $IMAGE:$TAG $BUILD_ARGS -f $DOCKERFILE .
 }
 
 case $1 in
