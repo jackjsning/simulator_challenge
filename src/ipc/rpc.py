@@ -47,7 +47,9 @@ class RPCServerCall:
     """
 
     def __init__(
-        self, request_msg: core.RPCRequest, async_proc_func: Callable,
+        self,
+        request_msg: core.RPCRequest,
+        async_proc_func: Callable,
     ):
         self.request_msg = request_msg
         self._async_proc_func = async_proc_func
@@ -85,7 +87,9 @@ class BaseRPCAgent:
     """Simple common logic for clients and servers."""
 
     def __init__(
-        self, node_id: core.NodeID, rpc_spec: core.RPCSpec,
+        self,
+        node_id: core.NodeID,
+        rpc_spec: core.RPCSpec,
     ):
         self._node_id = node_id
         self._rpc_spec = rpc_spec
@@ -116,7 +120,10 @@ class RPCServer(BaseRPCAgent):
     """
 
     def __init__(
-        self, node_id: core.NodeID, rpc_spec: core.RPCSpec, async_proc_func: Callable,
+        self,
+        node_id: core.NodeID,
+        rpc_spec: core.RPCSpec,
+        async_proc_func: Callable,
     ):
         super().__init__(node_id, rpc_spec)
 
@@ -130,10 +137,14 @@ class RPCServer(BaseRPCAgent):
         self._update_status()
 
         self._request_sub = pubsub.Subscriber(
-            self._node_id, self._request_topic_spec, self._handle_request,
+            self._node_id,
+            self._request_topic_spec,
+            self._handle_request,
         )
         self._cancel_sub = pubsub.Subscriber(
-            self._node_id, self._cancel_topic_spec, self._handle_cancel,
+            self._node_id,
+            self._cancel_topic_spec,
+            self._handle_cancel,
         )
 
     def _update_status(self) -> None:
@@ -208,7 +219,9 @@ class RPCClient(BaseRPCAgent):
         self._request_pub = pubsub.Publisher(self._node_id, self._request_topic_spec)
         self._cancel_pub = pubsub.Publisher(self._node_id, self._cancel_topic_spec)
         self._response_sub = pubsub.Subscriber(
-            self._node_id, self._get_response_topic_spec(self._node_id), None,
+            self._node_id,
+            self._get_response_topic_spec(self._node_id),
+            None,
         )
 
     async def call(self, request_msg: core.RPCRequest) -> core.RPCResponse:

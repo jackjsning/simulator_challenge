@@ -24,8 +24,7 @@ class PotreroRC(base_node.BaseNode):
 
     @staticmethod
     def _extract_direction(arrow_key_bytes):
-        """Returns the direction of the arrow key pressed.
-        """
+        """Returns the direction of the arrow key pressed."""
         if arrow_key_bytes == "[D":
             direction = "L"
         elif arrow_key_bytes == "[C":

@@ -56,7 +56,9 @@ class BaseNode:
             self._rpc_clients[rpc_spec] = rpc.RPCClient(self._node_id, rpc_spec)
 
     async def rpc_call(
-        self, rpc_spec: core.RPCSpec, request_msg: core.RPCRequest,
+        self,
+        rpc_spec: core.RPCSpec,
+        request_msg: core.RPCRequest,
     ) -> core.RPCResponse:
         return await self._rpc_clients[rpc_spec].call(request_msg)
 

@@ -29,11 +29,12 @@ LATENCY_WINDOW_S = 1  # Analyze messages during the past window, seconds
 
 
 class BasePubSubAgent:
-    """Simple common logic for publishers and subscribers.
-    """
+    """Simple common logic for publishers and subscribers."""
 
     def __init__(
-        self, node_id: core.NodeID, topic_spec: core.TopicSpec,
+        self,
+        node_id: core.NodeID,
+        topic_spec: core.TopicSpec,
     ):
         self._node_id = node_id
         self._topic_spec = topic_spec
@@ -45,11 +46,12 @@ class BasePubSubAgent:
 
 
 class Publisher(BasePubSubAgent):
-    """Provides the ability to publish messages on the given topic.
-    """
+    """Provides the ability to publish messages on the given topic."""
 
     def __init__(
-        self, node_id: core.NodeID, topic_spec: core.TopicSpec,
+        self,
+        node_id: core.NodeID,
+        topic_spec: core.TopicSpec,
     ):
         super().__init__(node_id, topic_spec)
         self._pub_counter = 0
@@ -116,8 +118,7 @@ class Subscriber(BasePubSubAgent):
         self._pubsub_client.subscribe(self._topic_spec.channel)
 
     async def listen(self) -> None:
-        """Spin and asynchronously execute provided callback as messages are received.
-        """
+        """Spin and asynchronously execute provided callback as messages are received."""
 
         if self._async_callback is None:
             return
@@ -152,8 +153,7 @@ class Subscriber(BasePubSubAgent):
         return msg
 
     def _check_latency(self, msg: core.Message) -> None:
-        """Check whether subscriber is experiencing any latency issues, and log if so.
-        """
+        """Check whether subscriber is experiencing any latency issues, and log if so."""
 
         window_ready = self._update_latency_records(msg)
         if not window_ready:
@@ -194,7 +194,8 @@ class Subscriber(BasePubSubAgent):
         now_ts = now_dt.timestamp()
 
         new_latency_record = SubscriberLatencyRecord(
-            msg_rcv_ts=now_ts, msg_latency=(now_dt - msg.pub_dt).total_seconds(),
+            msg_rcv_ts=now_ts,
+            msg_latency=(now_dt - msg.pub_dt).total_seconds(),
         )
         self._latency_records.append(new_latency_record)
 

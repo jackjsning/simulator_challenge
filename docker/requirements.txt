@@ -3,3 +3,4 @@ numpy
 pydantic
 pytest
 pytest-asyncio
+black

@@ -66,11 +66,15 @@ class TopicSpecs(Registry):
         msg_cls=messages.JoystickDeflection,
     )
     ODOMETRY = core.TopicSpec(
-        broker_spec=BrokerSpecs.GENERAL, channel="odometry", msg_cls=messages.Odometry,
+        broker_spec=BrokerSpecs.GENERAL,
+        channel="odometry",
+        msg_cls=messages.Odometry,
     )
 
     DEBUG = core.TopicSpec(
-        broker_spec=BrokerSpecs.GENERAL, channel="debug", msg_cls=messages.Debug,
+        broker_spec=BrokerSpecs.GENERAL,
+        channel="debug",
+        msg_cls=messages.Debug,
     )
 
 

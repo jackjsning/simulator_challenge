@@ -7,8 +7,7 @@ from node import base_node
 
 
 class NavigateServer(base_node.BaseNode):
-    """Navigate RPC server.
-    """
+    """Navigate RPC server."""
 
     def __init__(self):
         super().__init__(registry.NodeIDs.NAVIGATE_SERVER)
