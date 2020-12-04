@@ -12,5 +12,8 @@ shell:
 format:
 	@./docker/run.sh built black /built/src
 
+type_check:
+	@./docker/run.sh built mypy --config-file /built/mypy.ini /built/src
+
 build_container:
 	./docker/build.sh container

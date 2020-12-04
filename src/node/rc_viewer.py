@@ -1,7 +1,9 @@
 import asyncio
 import sys
+import os
+import time
 
-import numpy as np
+import numpy as np  # type: ignore[import]
 from ipc import core, messages, pubsub, registry
 from node import base_node
 
@@ -10,21 +12,21 @@ MAP_BOUNDS = (-10, 10)
 
 
 class PotreroView(base_node.BaseNode):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(registry.NodeIDs.POTRERO_VIEW)
         self._viz_welcome()
         self.add_subscribers({registry.TopicSpecs.ODOMETRY: self.rcv_odometry})
 
     @staticmethod
-    def _viz_welcome():
-        print("# Welcome to Potrero, the next-gen Built Robotics UI.")
+    def _viz_welcome() -> None:
+        print("# Welcome to the next-gen Built Robotics UI.")
         print("# Here is a 1D map of your robot in the world.")
 
-    async def rcv_odometry(self, msg: messages.Odometry):
+    async def rcv_odometry(self, msg: messages.Odometry) -> None:
         self._viz_map(msg.position)
 
     @staticmethod
-    def _viz_map(position):
+    def _viz_map(position: float) -> None:
         number_line_len = int(MAP_BOUNDS[1] - MAP_BOUNDS[0])
         line_position = int(np.clip(position - MAP_BOUNDS[0], 0, number_line_len))
 

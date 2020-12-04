@@ -1,6 +1,7 @@
-redis
+black
+mypy
 numpy
 pydantic
 pytest
 pytest-asyncio
-black
+redis

@@ -44,21 +44,6 @@ class JoystickDeflection(core.Message):
     deflection: pydantic.confloat(ge=-1.0, le=1.0)  # type: ignore[valid-type]
 
 
-class SignalQuest(core.Message):
-    roll: int  # tenth degs
-    pitch: int  # tenth degs -- termed "elevation" in the SQ docs
-
-    roll_vel: int  # tenth degs per second
-    pitch_vel: int  # tenth degs per second
-    yaw_vel: int  # tenth degs per second
-
-    x_accel: int  # milligees
-    y_accel: int  # milligees
-    z_accel: int  # milligees
-
-    checksum: int  # see docs
-
-
 ########################################################################################
 # PROCESSED SENSOR DATA ################################################################
 ########################################################################################

@@ -3,37 +3,38 @@ import sys
 import termios
 import time
 import tty
+from typing import Optional
 
 from ipc import core, messages, pubsub, registry
 from node import base_node
 
 
 class PotreroRC(base_node.BaseNode):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(registry.NodeIDs.POTRERO_RC)
         self.add_publishers(registry.TopicSpecs.RC_JS_DEF)
         self.add_tasks(self._read_keyboard, self._viz_pub_loop)
 
-        self._direction = None
+        self._direction: Optional[str] = None
         self._viz_welcome()
 
     @staticmethod
-    def _viz_welcome():
+    def _viz_welcome() -> None:
         print("# Welcome to Potrero, the next-gen Built Robotics UI.")
         print("# Use the left and right arrow keys to RC your robot, 'q' to exit.")
 
     @staticmethod
-    def _extract_direction(arrow_key_bytes):
+    def _extract_direction(arrow_key_bytes: str) -> Optional[str]:
         """Returns the direction of the arrow key pressed."""
         if arrow_key_bytes == "[D":
-            direction = "L"
+            direction: Optional[str] = "L"
         elif arrow_key_bytes == "[C":
             direction = "R"
         else:
             direction = None
         return direction
 
-    def _read_keyboard(self):
+    def _read_keyboard(self) -> None:
         # Change terminal settings so that we can receive keypresses for arrow keys without waiting
         # for a newline.
         fd = sys.stdin.fileno()
@@ -56,7 +57,7 @@ class PotreroRC(base_node.BaseNode):
             finally:
                 termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
-    async def _viz_pub_loop(self):
+    async def _viz_pub_loop(self) -> None:
         while True:
             dir_label = " " if self._direction is None else self._direction
             print(f"\rDIRECTION: [{dir_label}]", end="")

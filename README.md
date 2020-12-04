@@ -5,3 +5,4 @@
 3. `make clean_redis`
 4. `make shell`
 5. `make format`
+6. `make type_check`
