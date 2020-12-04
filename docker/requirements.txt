@@ -1,0 +1,5 @@
+redis
+numpy
+pydantic
+pytest
+pytest-asyncio
