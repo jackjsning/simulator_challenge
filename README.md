@@ -27,7 +27,13 @@ From the container's shell terminal (use separate terminals for each command):
 
 ## Deliverables
 
-1. Design doc (recommended) - Please follow this [template](https://www.industrialempathy.com/posts/design-docs-at-google/). Things to think about as you’re writing the doc:
+1. Design doc (recommended):
+    * Template:
+        * Summary of problem (ensures all aligned)
+        * Summary of proposed solution, including integration to existing codebase + upcoming PRs
+        * Summary of API (if applicable)
+        * Any icky parts of proposed solution + why they’re OK
+        * Any alternatives considered
     * Do your best to infer the intentions of the code base. How was it designed? What are the logical places where you could extend it?
     * Given that this is a (relatively) brief time to spend on a real codebase, it’s fine to make assumptions. Be very specific & clear about your assumptions in your design doc.
     * Please include a system diagram. We like to use Google Slides or LucidChart.
