@@ -27,17 +27,11 @@ From the container's shell terminal (use separate terminals for each command):
 
 ## Deliverables
 
-1. Design doc (recommended):
-    * Template:
-        * Summary of problem (ensures all aligned)
-        * Summary of proposed solution, including integration to existing codebase + upcoming PRs
-        * Summary of API (if applicable)
-        * Any icky parts of proposed solution + why they’re OK
-        * Any alternatives considered
+1. Documentation: Document your findings, design decisions, and assumptions throughout the day (in code or in a design doc).
     * Do your best to infer the intentions of the code base. How was it designed? What are the logical places where you could extend it?
-    * Given that this is a (relatively) brief time to spend on a real codebase, it’s fine to make assumptions. Be very specific & clear about your assumptions in your design doc.
-    * Please include a system diagram. We like to use Google Slides or LucidChart.
-    * Since this is only a day-long project, we expect just a 1-2 page document. If you think it's more clear to document your work in your code as docstrings, that's acceptable as well.
+    * Given that this is a (relatively) brief time to spend on a real codebase, it’s fine to make assumptions. Be very specific & clear about your assumptions.
+    * Include a system diagram if you find it helpful.
+    * If you do decide to go with a design doc, we expect just a 1-2 page document. Documenting your work in code as docstrings is another good option.
 2. Product Requirements:
     * 2D Map internal map representation.
     * New keyboard functionality:
@@ -53,16 +47,16 @@ From the container's shell terminal (use separate terminals for each command):
 
 ## Checkpoints
 
-1. Take a look around the codebase and see how everything works. Keep in mind that even though this seems like an unnecessarily complicated setup for such a simple app, this framework will be the foundation of Built’s future production robot software. Spend about an hour looking around the code before moving onto the next step. Please send questions to the interview slack channel!
-2. Spend a few hours playing around with the code, experimenting with new nodes, and making your design doc. 
-3. Check in with an engineer and discuss your design doc. Align on implementation steps.
-4. Implement! If you feel at this point your goals require more time than you have left, it's okay to decrease the scope of whatever you implement. We are more interested in seeing how much good code/design you can produce in a day than how much functionality you can add with bad code. Let us know if you also want to extend the deadline to the following day. 
-
+1. **Get your bearings**: Take a look around the codebase and see how everything works. Keep in mind that even though this seems like an unnecessarily complicated setup for such a simple app, this framework will be the foundation of Built’s future production robot software. Take your time playing around with the code, experimenting with new nodes, and making your design doc. Please send questions to the interview slack channel!
+2. **Review your plan**: Check in with your interview buddy and discuss your plan. Align on implementation steps.
+3. **Implement!**: If you feel at this point your goals require more time than you have left, it's okay to decrease the scope of whatever you implement. We are more interested in seeing how much good code/design you can produce in a day than how much functionality you can add with bad code. Let us know if you also want to extend the deadline to the following day.
+4. **Present your work**: Once you’ve implemented your solution, you’ll present your work to your interview buddy and a few other engineers. Focus on clearly communicating what you did and the decisions you made.
 
 ## Evaluation
 1. **Correctness**: First and foremost, this challenge is about getting something working. 
 2. **Understandability**: We prefer that you build a simple solution that is up to code standards than something with more functionality but poor design/code. In the real world, simple solutions pass code review and get merged. Overly complicated solutions with poor design, no matter how functional, don’t (at least, they shouldn’t).
     * For code style, even though there are multiple good ways of writing code, it's important for an entirety of a code base to have *consistent* style. Try to keep the standards that already exist.
     * In concrete terms, we would much rather you implement the basic 2D map really well than a half-baked 2D map w/a half-baked bonus feature.
+    * Code checks must pass black and mypy. If you are unfamiliar with mypy you may use type ignore comments.
 3. **Communication**: Effective communication is very important. Make sure to talk through the issues that you're thinking about and ask clarifying questions.
     * If you need to put hacks into your code, or you need to move on from a section before you’d like to, just write comments or document in your design doc, explaining why and what you’d like to change if you had more time.
