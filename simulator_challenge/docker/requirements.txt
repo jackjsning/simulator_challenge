@@ -1,0 +1,7 @@
+black
+mypy
+numpy
+pydantic
+pytest
+pytest-asyncio
+redis
